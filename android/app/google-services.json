@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "336327150316",
+    "project_id": "nursing-app-2022",
+    "storage_bucket": "nursing-app-2022.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:336327150316:android:5068fef743ceb043e773c9",
+        "android_client_info": {
+          "package_name": "com.example.nursingapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "336327150316-ch0dqilpkgec0mi49844v9k6c38ql4go.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJdmOp9eoQ1OLuz_aB_uok1JYQA2tFV2c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "336327150316-ch0dqilpkgec0mi49844v9k6c38ql4go.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "336327150316-rusg8f8rjf8o916c84hubcjd1c5cgrq1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.nursingapp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
