@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nursingapp/views/tasks/task_screen.dart';
-import 'package:nursingapp/views/shifts/shifts_screen.dart';
+import 'package:nursingapp/views/shifts/my_shifts_screen.dart';
 import 'package:provider/provider.dart';
 
 import '../controllers/bottom_nav_controller.dart';
@@ -28,7 +28,7 @@ class Root extends StatelessWidget {
             offstage: selectedNavItem != 1,
             child: TickerMode(
               enabled: selectedNavItem == 1,
-              child: const ShiftScreen(),
+              child: const MyShiftScreen(),
             ),
           ),
           Offstage(

@@ -37,7 +37,6 @@ class _TaskScreenState extends State<TaskScreen> {
   @override
   Widget build(BuildContext context) {
     var taskController = context.watch<TaskController>();
-    generateShiftType();
     return Column(
       children: [
         ProCard(

@@ -52,11 +52,7 @@ class TaskController with ChangeNotifier {
     shiftDataState = DataState.loading;
     generateShiftType().then((genShift) {
       if (genShift != null) {
-        FirebaseFirestore.instance
-            .collection(collectionShift)
-            .doc(user)
-            .get()
-            .then((document) {
+        fireStore.collection(collectionShift).doc(user).get().then((document) {
           if (document.data() != null) {
             List? shiftList = document.get("shift_list");
             if (shiftList != null && shiftList.isNotEmpty) {

@@ -28,7 +28,7 @@ class BottomNavBar extends StatelessWidget {
           ),
           BottomNavItem(
             index: 1,
-            title: "Shifts",
+            title: "My Shifts",
             iconData: Icons.date_range,
           ),
           BottomNavItem(
