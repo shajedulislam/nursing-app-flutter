@@ -14,4 +14,14 @@ class TaskModel {
     date = json['date'];
     shift = json['shift'];
   }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['date'] = date;
+    data['task'] = task;
+    data['patient'] = patient;
+    data['shift'] = shift;
+    data['status'] = status;
+    return data;
+  }
 }

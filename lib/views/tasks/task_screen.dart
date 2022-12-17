@@ -6,8 +6,10 @@ import 'package:nursingapp/models/task_model.dart';
 import 'package:nursingapp/utilities/constants/colors.dart';
 import 'package:nursingapp/utilities/enums/data_state.dart';
 import 'package:nursingapp/utilities/functions/generate_shift_type.dart';
+import 'package:nursingapp/utilities/functions/navigation.dart';
 import 'package:nursingapp/utilities/widgets/loader.dart';
 import 'package:nursingapp/views/tasks/components/task_card.dart';
+import 'package:nursingapp/views/tasks/screens/create_task/create_task_screen.dart';
 import 'package:pro_widgets/pro_widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:ud_design/ud_design.dart';
@@ -59,7 +61,9 @@ class _TaskScreenState extends State<TaskScreen> {
                   color: ProjectColors.blueDeep,
                   size: UdDesign.pt(24),
                 ),
-                onTap: () {},
+                onTap: () {
+                  push(screen: const CreateTaskScreen());
+                },
               )
             ],
           ),
@@ -87,9 +91,7 @@ class _TaskScreenState extends State<TaskScreen> {
                           snapshot.data!.docs.map((DocumentSnapshot document) {
                         Map<String, dynamic> data =
                             document.data()! as Map<String, dynamic>;
-                        //print(data);
                         TaskModel taskModel = TaskModel.fromJson(data);
-                        // print(DateTime.now().hour);
                         return ProTapper(
                           padding: const EdgeInsets.all(0),
                           onTap: () {
