@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:nursingapp/controllers/bottom_nav_controller.dart';
 import 'package:pro_widgets/pro_widgets.dart';
+import 'package:provider/provider.dart';
 import 'package:ud_design/ud_design.dart';
 
 import '../../services/shared_preference.dart';
@@ -30,6 +32,7 @@ class ProfileScreen extends StatelessWidget {
             backgroundColor: ProjectColors.blueDeep,
             onTap: () {
               localtor<SharedPreferenceServices>().clear();
+              context.read<BottomNavController>().selectedItem = 0;
               pushRemoveAll(screen: SigninScreen());
             },
           ),

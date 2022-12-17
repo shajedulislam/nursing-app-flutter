@@ -50,26 +50,26 @@ class SigninScreen extends StatelessWidget {
                           }
                         },
                       ),
-                      const ProGap(y: 16),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          ProText(
-                            text: "Don't have any account?",
-                            fontSize: UdDesign.fontSize(14),
-                            color: ProjectColors.textDeep,
-                          ),
-                          ProGap(x: UdDesign.pt(4)),
-                          ProTapper(
-                            child: ProText(
-                              text: "Sign up",
-                              fontSize: UdDesign.fontSize(14),
-                              color: ProjectColors.blueDeep,
-                            ),
-                            onTap: () {},
-                          )
-                        ],
-                      )
+                      // const ProGap(y: 16),
+                      // Row(
+                      //   mainAxisAlignment: MainAxisAlignment.center,
+                      //   children: [
+                      //     ProText(
+                      //       text: "Don't have any account?",
+                      //       fontSize: UdDesign.fontSize(14),
+                      //       color: ProjectColors.textDeep,
+                      //     ),
+                      //     ProGap(x: UdDesign.pt(4)),
+                      //     ProTapper(
+                      //       child: ProText(
+                      //         text: "Sign up",
+                      //         fontSize: UdDesign.fontSize(14),
+                      //         color: ProjectColors.blueDeep,
+                      //       ),
+                      //       onTap: () {},
+                      //     )
+                      //   ],
+                      // )
                     ],
                   )
                 ],
