@@ -57,6 +57,26 @@ class TaskDetailBottomSheet extends StatelessWidget {
                   fontSize: UdDesign.fontSize(14),
                   color: ProjectColors.textDeep,
                 ),
+                ProGap(
+                  y: UdDesign.pt(16),
+                ),
+                const ProDivider(),
+                ProGap(
+                  y: UdDesign.pt(16),
+                ),
+                ProText(
+                  text: "Patient Details",
+                  fontSize: UdDesign.fontSize(14),
+                  color: ProjectColors.blueDeep,
+                ),
+                ProGap(
+                  y: UdDesign.pt(16),
+                ),
+                ProText(
+                  text: taskModel.patient,
+                  fontSize: UdDesign.fontSize(14),
+                  color: ProjectColors.navyDeep,
+                ),
               ],
             ),
           ),
