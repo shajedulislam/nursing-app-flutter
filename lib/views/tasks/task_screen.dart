@@ -131,7 +131,10 @@ class _TaskScreenState extends State<TaskScreen> {
                                     sheetHeight: UdDesign.blocksYaxis(80),
                                   );
                                 },
-                                child: TaskCard(taskModel: taskModel),
+                                child: TaskCard(
+                                  taskModel: taskModel,
+                                  docID: document.id,
+                                ),
                               ),
                             )
                           ],

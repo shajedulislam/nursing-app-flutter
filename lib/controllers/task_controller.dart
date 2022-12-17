@@ -35,6 +35,19 @@ class TaskController with ChangeNotifier {
     });
   }
 
+  moveTask({
+    required String docID,
+    required String date,
+    required String shift,
+  }) async {
+    fireStore.collection(collectionTask).doc(docID).update({
+      "date": date,
+      "shift": shift,
+    }).catchError((_) {
+      showSnackbar(text: ProjectStrings.wentWrong);
+    });
+  }
+
   getShifts(String user) {
     shiftDataState = DataState.loading;
     generateShiftType().then((genShift) {

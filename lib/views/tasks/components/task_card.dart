@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:nursingapp/models/task_model.dart';
 import 'package:nursingapp/utilities/constants/colors.dart';
+import 'package:nursingapp/utilities/functions/navigation.dart';
+import 'package:nursingapp/views/tasks/screens/move_task/move_task_screen.dart';
 import 'package:pro_widgets/pro_widgets.dart';
 import 'package:ud_design/ud_design.dart';
 
@@ -9,7 +11,8 @@ import '../../../utilities/functions/datetime_converter.dart';
 
 class TaskCard extends StatelessWidget {
   final TaskModel taskModel;
-  const TaskCard({super.key, required this.taskModel});
+  final String docID;
+  const TaskCard({super.key, required this.taskModel, required this.docID});
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +70,14 @@ class TaskCard extends StatelessWidget {
                         taskModel.status != "done"
                             ? ProTapper(
                                 padding: const EdgeInsets.all(0),
-                                onTap: () {},
+                                onTap: () {
+                                  push(
+                                    screen: MoveTaskScreen(
+                                      taskModel: taskModel,
+                                      docID: docID,
+                                    ),
+                                  );
+                                },
                                 child: ProCard(
                                   borderRadius: UdDesign.pt(4),
                                   backgroundColor: Colors.red[600],
