@@ -7,7 +7,7 @@ import 'package:nursingapp/utilities/constants/colors.dart';
 import 'package:nursingapp/utilities/enums/data_state.dart';
 import 'package:nursingapp/utilities/functions/generate_shift_type.dart';
 import 'package:nursingapp/utilities/widgets/loader.dart';
-import 'package:nursingapp/views/home/components/task_card.dart';
+import 'package:nursingapp/views/tasks/components/task_card.dart';
 import 'package:pro_widgets/pro_widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:ud_design/ud_design.dart';

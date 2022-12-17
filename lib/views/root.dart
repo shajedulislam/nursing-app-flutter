@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nursingapp/views/home/task_screen.dart';
+import 'package:nursingapp/views/tasks/task_screen.dart';
 import 'package:nursingapp/views/shifts/shifts_screen.dart';
 import 'package:provider/provider.dart';
 
