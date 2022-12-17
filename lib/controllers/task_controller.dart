@@ -101,9 +101,9 @@ class TaskController with ChangeNotifier {
         .snapshots();
   }
 
-  updateStatus(String docID) {
+  updateStatus(String docID, String status) {
     fireStore.collection(collectionTask).doc(docID).update({
-      "status": "done",
+      "status": status == "pending" ? "done" : "pending",
     }).catchError((_) {
       showSnackbar(
           text:

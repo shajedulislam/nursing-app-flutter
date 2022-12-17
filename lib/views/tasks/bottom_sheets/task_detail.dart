@@ -1,13 +1,10 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:nursingapp/controllers/task_controller.dart';
 import 'package:nursingapp/utilities/constants/colors.dart';
-import 'package:nursingapp/utilities/functions/navigation.dart';
 import 'package:pro_widgets/pro_widgets.dart';
 import 'package:ud_design/ud_design.dart';
 
 import '../../../models/task_model.dart';
+import '../../../utilities/functions/datetime_converter.dart';
 
 class TaskDetailBottomSheet extends StatelessWidget {
   final TaskModel taskModel;
@@ -27,6 +24,34 @@ class TaskDetailBottomSheet extends StatelessWidget {
           Expanded(
             child: ListView(
               children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    ProText(
+                      text: stringToDatetimeLocal(
+                              dateTime: taskModel.date!,
+                              pattern: "dd MMM, yyyy") ??
+                          "",
+                      fontSize: UdDesign.fontSize(14),
+                      color: ProjectColors.navyDeep,
+                    ),
+                    ProCard(
+                      borderRadius: UdDesign.pt(4),
+                      backgroundColor: taskModel.status == "done"
+                          ? Colors.green
+                          : Colors.orangeAccent,
+                      padding: EdgeInsets.all(UdDesign.pt(4)),
+                      child: ProText(
+                        text: taskModel.status?.toUpperCase() ?? "",
+                        color: ProjectColors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    )
+                  ],
+                ),
+                ProGap(
+                  y: UdDesign.pt(16),
+                ),
                 ProText(
                   text: taskModel.task,
                   fontSize: UdDesign.fontSize(14),
@@ -35,39 +60,6 @@ class TaskDetailBottomSheet extends StatelessWidget {
               ],
             ),
           ),
-          taskModel.status == "pending"
-              ? Row(
-                  children: [
-                    Expanded(
-                      child: ProButtonBasic(
-                        width: double.infinity,
-                        height: UdDesign.pt(50),
-                        borderRadius: UdDesign.pt(4),
-                        text: "Mark as Done",
-                        fontSize: UdDesign.fontSize(16),
-                        backgroundColor: Colors.green[600],
-                        onTap: () {
-                          pop();
-                          TaskController().updateStatus(docID);
-                        },
-                      ),
-                    ),
-                    ProGap(x: UdDesign.pt(16)),
-                    Expanded(
-                      child: ProButtonBasic(
-                        width: double.infinity,
-                        height: UdDesign.pt(50),
-                        borderRadius: UdDesign.pt(4),
-                        text: "Transfer",
-                        fontSize: UdDesign.fontSize(16),
-                        backgroundColor: Colors.red[600],
-                        onTap: () {},
-                      ),
-                    )
-                  ],
-                )
-              : const SizedBox.shrink(),
-          Platform.isIOS ? ProGap(y: UdDesign.pt(16)) : const SizedBox.shrink(),
         ],
       ),
     );

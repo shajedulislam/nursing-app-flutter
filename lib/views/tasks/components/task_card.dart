@@ -14,9 +14,11 @@ class TaskCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(
-        vertical: UdDesign.pt(8),
-        horizontal: UdDesign.pt(16),
+      padding: EdgeInsets.only(
+        top: UdDesign.pt(8),
+        left: UdDesign.pt(0),
+        right: UdDesign.pt(16),
+        bottom: UdDesign.pt(8),
       ),
       child: ProCard(
         height: UdDesign.pt(80),
@@ -62,18 +64,24 @@ class TaskCard extends StatelessWidget {
                           fontSize: UdDesign.fontSize(14),
                           color: ProjectColors.navyDeep,
                         ),
-                        ProCard(
-                          borderRadius: UdDesign.pt(4),
-                          backgroundColor: taskModel.status == "done"
-                              ? Colors.green
-                              : Colors.orangeAccent,
-                          padding: EdgeInsets.all(UdDesign.pt(4)),
-                          child: ProText(
-                            text: taskModel.status?.toUpperCase() ?? "",
-                            color: ProjectColors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        )
+                        taskModel.status != "done"
+                            ? ProTapper(
+                                padding: const EdgeInsets.all(0),
+                                onTap: () {},
+                                child: ProCard(
+                                  borderRadius: UdDesign.pt(4),
+                                  backgroundColor: Colors.red[600],
+                                  padding: EdgeInsets.symmetric(
+                                      vertical: UdDesign.pt(4),
+                                      horizontal: UdDesign.pt(8)),
+                                  child: const ProText(
+                                    text: "Move",
+                                    color: ProjectColors.white,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              )
+                            : const SizedBox.shrink()
                       ],
                     )
                   ],

@@ -9,6 +9,7 @@ import 'package:nursingapp/utilities/enums/data_state.dart';
 import 'package:nursingapp/utilities/functions/generate_shift_type.dart';
 import 'package:nursingapp/utilities/functions/navigation.dart';
 import 'package:nursingapp/utilities/widgets/loader.dart';
+import 'package:nursingapp/utilities/widgets/radio_button.dart';
 import 'package:nursingapp/views/tasks/components/task_card.dart';
 import 'package:nursingapp/views/tasks/screens/create_task/create_task_screen.dart';
 import 'package:pro_widgets/pro_widgets.dart';
@@ -63,9 +64,9 @@ class _TaskScreenState extends State<TaskScreen> {
                   size: UdDesign.pt(24),
                 ),
                 onTap: () {
-                  taskController
-                      .resetCreateTask()
-                      .then((_) => push(screen: const CreateTaskScreen()));
+                  taskController.resetCreateTask().then((_) => push(
+                        screen: const CreateTaskScreen(),
+                      ));
                 },
               )
             ],
@@ -101,21 +102,39 @@ class _TaskScreenState extends State<TaskScreen> {
                         Map<String, dynamic> data =
                             document.data()! as Map<String, dynamic>;
                         TaskModel taskModel = TaskModel.fromJson(data);
-                        return ProTapper(
-                          padding: const EdgeInsets.all(0),
-                          onTap: () {
-                            proBottomSheet(
-                              context: context,
-                              appBarTitle: "Task Details",
-                              sheetBody: TaskDetailBottomSheet(
-                                taskModel: taskModel,
-                                docID: document.id,
+                        return Row(
+                          children: [
+                            ProGap(x: UdDesign.pt(12)),
+                            ProRadioButton(
+                              checked: taskModel.status == "done",
+                              size: UdDesign.pt(20),
+                              onTap: (_) {
+                                TaskController().updateStatus(
+                                  document.id,
+                                  taskModel.status!,
+                                );
+                              },
+                            ),
+                            ProGap(x: UdDesign.pt(12)),
+                            Expanded(
+                              child: ProTapper(
+                                padding: const EdgeInsets.all(0),
+                                onTap: () {
+                                  proBottomSheet(
+                                    context: context,
+                                    appBarTitle: "Task Details",
+                                    sheetBody: TaskDetailBottomSheet(
+                                      taskModel: taskModel,
+                                      docID: document.id,
+                                    ),
+                                    isScrollControlled: true,
+                                    sheetHeight: UdDesign.blocksYaxis(80),
+                                  );
+                                },
+                                child: TaskCard(taskModel: taskModel),
                               ),
-                              isScrollControlled: true,
-                              sheetHeight: UdDesign.blocksYaxis(80),
-                            );
-                          },
-                          child: TaskCard(taskModel: taskModel),
+                            )
+                          ],
                         );
                       }).toList(),
                     );

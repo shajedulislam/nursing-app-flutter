@@ -125,7 +125,7 @@ class ProRadioButton extends StatelessWidget {
               width: size ?? 16,
               decoration: BoxDecoration(
                 border: Border.all(
-                  color: ProjectColors.border,
+                  color: ProjectColors.blueDeep.withOpacity(0.5),
                 ),
                 borderRadius: BorderRadius.all(
                   Radius.circular(
@@ -155,13 +155,19 @@ class ProRadioButton extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(width: 6),
-            ProText(
-              text: title ?? "Radio Button",
-              fontSize: titleFontSize ?? 14,
-              fontWeight: titleWeight ?? FontWeight.w500,
-              color: titleColor ?? Colors.black,
-            )
+            title != null
+                ? Row(
+                    children: [
+                      const SizedBox(width: 6),
+                      ProText(
+                        text: title ?? "Radio Button",
+                        fontSize: titleFontSize ?? 14,
+                        fontWeight: titleWeight ?? FontWeight.w500,
+                        color: titleColor ?? Colors.black,
+                      )
+                    ],
+                  )
+                : const SizedBox.shrink()
           ],
         ),
       ),
