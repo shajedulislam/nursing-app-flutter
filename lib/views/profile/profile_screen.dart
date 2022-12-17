@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nursingapp/controllers/bottom_nav_controller.dart';
+import 'package:nursingapp/controllers/signin_controller.dart';
 import 'package:pro_widgets/pro_widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:ud_design/ud_design.dart';
@@ -20,8 +21,42 @@ class ProfileScreen extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Column(
-            children: const [],
+          SafeArea(
+            child: Row(
+              children: [
+                ProShape(
+                  height: UdDesign.pt(50),
+                  width: UdDesign.pt(50),
+                  radius: UdDesign.pt(25),
+                  child: Icon(
+                    Icons.person,
+                    color: Colors.white,
+                    size: UdDesign.pt(28),
+                  ),
+                ),
+                ProGap(x: UdDesign.pt(16)),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ProText(
+                      text:
+                          "${context.read<SigninController>().userModel?.name}",
+                      fontSize: UdDesign.fontSize(16),
+                      color: ProjectColors.navyDeep,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    ProGap(y: UdDesign.pt(2)),
+                    ProText(
+                      text:
+                          "${context.read<SigninController>().userModel?.email}",
+                      fontSize: UdDesign.fontSize(14),
+                      color: ProjectColors.navyDeep,
+                      fontWeight: FontWeight.bold,
+                    )
+                  ],
+                )
+              ],
+            ),
           ),
           ProButtonBasic(
             width: double.infinity,

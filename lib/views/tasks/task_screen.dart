@@ -6,7 +6,6 @@ import 'package:nursingapp/models/task_model.dart';
 import 'package:nursingapp/utilities/constants/colors.dart';
 import 'package:nursingapp/utilities/constants/strings.dart';
 import 'package:nursingapp/utilities/enums/data_state.dart';
-import 'package:nursingapp/utilities/functions/generate_shift_type.dart';
 import 'package:nursingapp/utilities/functions/navigation.dart';
 import 'package:nursingapp/utilities/widgets/loader.dart';
 import 'package:nursingapp/utilities/widgets/radio_button.dart';
