@@ -4,6 +4,7 @@ import 'package:nursingapp/controllers/signin_controller.dart';
 import 'package:nursingapp/controllers/task_controller.dart';
 import 'package:nursingapp/models/task_model.dart';
 import 'package:nursingapp/utilities/constants/colors.dart';
+import 'package:nursingapp/utilities/constants/strings.dart';
 import 'package:nursingapp/utilities/enums/data_state.dart';
 import 'package:nursingapp/utilities/functions/generate_shift_type.dart';
 import 'package:nursingapp/utilities/functions/navigation.dart';
@@ -62,7 +63,9 @@ class _TaskScreenState extends State<TaskScreen> {
                   size: UdDesign.pt(24),
                 ),
                 onTap: () {
-                  push(screen: const CreateTaskScreen());
+                  taskController
+                      .resetCreateTask()
+                      .then((_) => push(screen: const CreateTaskScreen()));
                 },
               )
             ],
@@ -78,7 +81,13 @@ class _TaskScreenState extends State<TaskScreen> {
                     AsyncSnapshot<QuerySnapshot> snapshot,
                   ) {
                     if (snapshot.hasError) {
-                      return const Center(child: Text('Something went wrong'));
+                      return Center(
+                        child: ProText(
+                          text: ProjectStrings.wentWrong,
+                          fontSize: UdDesign.fontSize(14),
+                          color: ProjectColors.navyDeep,
+                        ),
+                      );
                     }
 
                     if (snapshot.connectionState == ConnectionState.waiting) {
@@ -113,9 +122,21 @@ class _TaskScreenState extends State<TaskScreen> {
                   },
                 )
               : taskController.shiftDataState == DataState.empty
-                  ? const Center(child: Text('No shift today'))
+                  ? Center(
+                      child: ProText(
+                        text: 'No task available in current shift.',
+                        fontSize: UdDesign.fontSize(14),
+                        color: ProjectColors.navyDeep,
+                      ),
+                    )
                   : taskController.shiftDataState == DataState.error
-                      ? const Center(child: Text('Something went wrong'))
+                      ? Center(
+                          child: ProText(
+                            text: ProjectStrings.wentWrong,
+                            fontSize: UdDesign.fontSize(14),
+                            color: ProjectColors.navyDeep,
+                          ),
+                        )
                       : const ProLoader(),
         )
       ],

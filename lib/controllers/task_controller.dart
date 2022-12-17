@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:nursingapp/models/shift_model.dart';
 import 'package:nursingapp/models/task_model.dart';
+import 'package:nursingapp/utilities/constants/strings.dart';
 import 'package:nursingapp/utilities/enums/data_state.dart';
 import 'package:nursingapp/utilities/functions/generate_shift_type.dart';
 import 'package:nursingapp/utilities/functions/show_snackbar.dart';
@@ -16,8 +17,22 @@ class TaskController with ChangeNotifier {
   late QuerySnapshot shiftStream;
   TaskModel taskCreateModel = TaskModel();
 
+  Future resetCreateTask() async {
+    taskCreateModel = TaskModel();
+  }
+
   notify() {
     notifyListeners();
+  }
+
+  createTask() async {
+    taskCreateModel.status = "pending";
+    fireStore
+        .collection(collectionTask)
+        .add(taskCreateModel.toJson())
+        .catchError((_) {
+      showSnackbar(text: ProjectStrings.wentWrong);
+    });
   }
 
   getShifts(String user) {

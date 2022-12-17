@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:nursingapp/controllers/task_controller.dart';
 import 'package:nursingapp/utilities/constants/colors.dart';
@@ -64,7 +66,8 @@ class TaskDetailBottomSheet extends StatelessWidget {
                     )
                   ],
                 )
-              : const SizedBox.shrink()
+              : const SizedBox.shrink(),
+          Platform.isIOS ? ProGap(y: UdDesign.pt(16)) : const SizedBox.shrink(),
         ],
       ),
     );
