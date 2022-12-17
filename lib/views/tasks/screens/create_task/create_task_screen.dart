@@ -33,11 +33,16 @@ class _CreateTaskScreenState extends State<CreateTaskScreen> {
       child: Scaffold(
         appBar: AppBar(),
         body: Padding(
-          padding: EdgeInsets.all(UdDesign.pt(16)),
+          padding: EdgeInsets.only(
+            left: UdDesign.pt(16),
+            right: UdDesign.pt(16),
+            bottom: UdDesign.pt(16),
+          ),
           child: Column(
             children: [
               Expanded(
                 child: ListView(
+                  padding: EdgeInsets.only(top: UdDesign.pt(16)),
                   children: [
                     ProTextFormField(
                       labelFontSize: UdDesign.fontSize(14),
@@ -215,7 +220,8 @@ class _CreateTaskScreenState extends State<CreateTaskScreen> {
                           },
                         ),
                       ],
-                    )
+                    ),
+                    const ProGap(y: 16),
                   ],
                 ),
               ),

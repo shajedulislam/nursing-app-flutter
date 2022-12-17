@@ -39,10 +39,10 @@ class _TaskScreenState extends State<TaskScreen> {
     return Column(
       children: [
         ProCard(
-          height: UdDesign.pt(70),
+          height: UdDesign.pt(75),
           borderRadius: 0,
           padding: EdgeInsets.only(
-            top: UdDesign.pt(20),
+            top: UdDesign.pt(28),
             left: UdDesign.pt(16),
             right: UdDesign.pt(16),
           ),
