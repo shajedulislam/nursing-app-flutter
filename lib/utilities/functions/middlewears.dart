@@ -1,5 +1,8 @@
+import 'package:flutter/material.dart';
+import 'package:nursingapp/controllers/signin_controller.dart';
 import 'package:nursingapp/utilities/global_objects.dart';
 import 'package:nursingapp/views/root.dart';
+import 'package:provider/provider.dart';
 
 import '../../services/shared_preference.dart';
 import '../../views/signin/loader/signin_loader.dart';
@@ -22,7 +25,7 @@ Future<void> signinMiddleWear() async {
   }
 }
 
-rootMiddleWear() async {
+rootMiddleWear(BuildContext context) async {
   bool networkAvailable = false;
 
   //Network Check
@@ -33,7 +36,13 @@ rootMiddleWear() async {
         .getBool(key: ProjectKeys.isLoggedIn)
         .then((value) async {
       if (value != null && value == true) {
-        pushRemoveAll(screen: const Root());
+        try {
+          context.read<SigninController>().getUserModelFromDevice();
+          pushRemoveAll(screen: const Root());
+        } catch (_) {
+          pushRemoveAll(screen: SigninScreen());
+          showSnackbar(text: ProjectStrings.wentWrong);
+        }
       } else {
         pushRemoveAll(screen: SigninScreen());
       }

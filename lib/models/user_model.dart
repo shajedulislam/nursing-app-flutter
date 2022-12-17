@@ -10,4 +10,12 @@ class UserModel {
     age = json['age'];
     email = json['email'];
   }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['name'] = name;
+    data['age'] = age;
+    data['email'] = email;
+    return data;
+  }
 }

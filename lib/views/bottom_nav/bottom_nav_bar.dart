@@ -23,7 +23,7 @@ class BottomNavBar extends StatelessWidget {
         children: const [
           BottomNavItem(
             index: 0,
-            title: "Todo",
+            title: "Tasks",
             iconData: Icons.pending_actions,
           ),
           BottomNavItem(

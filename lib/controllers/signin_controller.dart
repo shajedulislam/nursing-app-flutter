@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:nursingapp/models/error_model.dart';
@@ -41,11 +43,15 @@ class SigninController with ChangeNotifier {
           printer(mapData);
           if (mapData['password'] == password) {
             userModel = UserModel.fromJson(mapData);
-            dataState = DataState.loaded;
+            await localtor<SharedPreferenceServices>().setString(
+              key: ProjectKeys.userModel,
+              value: json.encode(userModel),
+            );
             await localtor<SharedPreferenceServices>().setBool(
               key: ProjectKeys.isLoggedIn,
               value: true,
             );
+            dataState = DataState.loaded;
             pushRemoveAll(screen: const Root());
           } else {
             errorModel = ErrorModel(
@@ -54,7 +60,7 @@ class SigninController with ChangeNotifier {
             );
             dataState = DataState.error;
           }
-        } catch (_) {
+        } catch (e) {
           errorModel = ErrorModel(
             hasError: true,
             message: ProjectStrings.wentWrong,
@@ -73,5 +79,13 @@ class SigninController with ChangeNotifier {
       dataState = DataState.error;
       notifyListeners();
     });
+  }
+
+  Future getUserModelFromDevice() async {
+    String? userModelString = await localtor<SharedPreferenceServices>()
+        .getString(key: ProjectKeys.userModel);
+    if (userModelString != null) {
+      userModel = UserModel.fromJson(json.decode(userModelString));
+    }
   }
 }

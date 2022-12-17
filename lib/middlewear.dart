@@ -14,7 +14,7 @@ class Middlewear extends StatefulWidget {
 class _MiddlewearState extends State<Middlewear> {
   @override
   void initState() {
-    rootMiddleWear();
+    rootMiddleWear(context);
     super.initState();
   }
 

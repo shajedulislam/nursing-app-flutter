@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nursingapp/views/home/todo_screen.dart';
+import 'package:nursingapp/views/home/task_screen.dart';
 import 'package:nursingapp/views/shifts/shifts_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -21,7 +21,7 @@ class Root extends StatelessWidget {
             offstage: selectedNavItem != 0,
             child: TickerMode(
               enabled: selectedNavItem == 0,
-              child: const TodoScreen(),
+              child: const TaskScreen(),
             ),
           ),
           Offstage(
